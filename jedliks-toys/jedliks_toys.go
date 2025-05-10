@@ -2,7 +2,6 @@ package jedlik
 
 import (
 	"fmt"
-	"math"
 )
 
 // TODO: define the 'Drive()' method
@@ -25,7 +24,7 @@ func (car Car) DisplayBattery() string {
 
 // TODO: define the 'CanFinish(trackDistance int) bool' method
 func (car Car) CanFinish(trackDistance int) bool {
-	return int(math.Ceil(float64(trackDistance)/float64(car.speed)))*car.batteryDrain <= car.battery
+	return car.battery/car.batteryDrain*car.speed >= trackDistance
 }
 
 // Your first steps could be to read through the tasks, and create
