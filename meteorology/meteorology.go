@@ -22,7 +22,7 @@ type Temperature struct {
 
 // Add a String method to the Temperature type
 func (t Temperature) String() string {
-	return fmt.Sprintf("%d %v", t.degree, t.unit)
+	return fmt.Sprintf("%v %v", t.degree, t.unit)
 }
 
 type SpeedUnit int
@@ -45,7 +45,7 @@ type Speed struct {
 
 // Add a String method to Speed
 func (s Speed) String() string {
-	return fmt.Sprintf("%d %v", s.magnitude, s.unit)
+	return fmt.Sprintf("%v %v", s.magnitude, s.unit)
 }
 
 type MeteorologyData struct {
@@ -58,7 +58,6 @@ type MeteorologyData struct {
 
 // Add a String method to MeteorologyData
 func (m MeteorologyData) String() string {
-	return fmt.Sprintf(
-		"%s: %v, Wind %s at %s, %d%% Humidity",
+	return fmt.Sprintf("%v: %v, Wind %v at %v, %d%% Humidity",
 		m.location, m.temperature, m.windDirection, m.windSpeed, m.humidity)
 }
