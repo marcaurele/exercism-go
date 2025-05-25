@@ -1,7 +1,6 @@
 package expenses
 
 import (
-	"errors"
 	"fmt"
 )
 
@@ -63,7 +62,7 @@ func TotalByPeriod(in []Record, p DaysPeriod) float64 {
 func CategoryExpenses(in []Record, p DaysPeriod, c string) (float64, error) {
 	categoryFiltered := Filter(in, ByCategory(c))
 	if len(categoryFiltered) == 0 {
-		return 0, errors.New(fmt.Sprintf("unknown category %s", c))
+		return 0, fmt.Errorf("unknown category %s", c)
 	}
 	return TotalByPeriod(categoryFiltered, p), nil
 }
