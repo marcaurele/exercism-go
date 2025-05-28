@@ -6,11 +6,7 @@ func SquareOfSum(n int) int {
 }
 
 func SumOfSquares(n int) int {
-	total := 0
-	for i := 0; i < n; i++ {
-		total += (i + 1) * (i + 1)
-	}
-	return total
+	return (n * (n + 1) * (2*n + 1)) / 6
 }
 
 func Difference(n int) int {
