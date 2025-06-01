@@ -7,7 +7,10 @@ package strain
 // them here: https://go.dev/tour/generics/1
 
 func Keep[T any](list []T, fn func(T) bool) []T {
-	var result []T
+	if list == nil {
+		return list
+	}
+	result := make([]T, 0, len(list))
 	for _, i := range list {
 		if fn(i) {
 			result = append(result, i)
@@ -17,11 +20,5 @@ func Keep[T any](list []T, fn func(T) bool) []T {
 }
 
 func Discard[T any](list []T, fn func(T) bool) []T {
-	var result []T
-	for _, i := range list {
-		if !fn(i) {
-			result = append(result, i)
-		}
-	}
-	return result
+	return Keep(list, func(value T) bool { return !fn(value) })
 }
