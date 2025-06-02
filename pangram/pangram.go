@@ -1,14 +1,14 @@
 package pangram
 
-import "strings"
+import (
+	"unicode"
+)
 
 func IsPangram(input string) bool {
 	letterSeen := map[rune]bool{}
-	for _, char := range strings.ToLower(input) {
-		if char >= 'a' && char <= 'z' {
-			if _, exists := letterSeen[char]; exists {
-				continue
-			}
+	for _, char := range input {
+		lowerChar := unicode.ToLower(char)
+		if _, exists := letterSeen[lowerChar]; lowerChar >= 'a' && lowerChar <= 'z' && !exists {
 			letterSeen[char] = true
 		}
 	}
