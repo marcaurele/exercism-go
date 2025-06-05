@@ -21,16 +21,7 @@ func Modifier(score int) int {
 
 // Ability uses randomness to generate the score for an ability
 func Ability() int {
-	total := rand.Intn(6) + 1
-	lowest := total
-	for i := 0; i < 3; i++ {
-		score := rand.Intn(6) + 1
-		total += score
-		if score < lowest {
-			lowest = score
-		}
-	}
-	return total - lowest
+	return rand.Intn(16) + 3
 }
 
 // GenerateCharacter creates a new Character with random scores for abilities
