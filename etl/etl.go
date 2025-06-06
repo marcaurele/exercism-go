@@ -1,5 +1,13 @@
 package etl
 
+import "strings"
+
 func Transform(in map[int][]string) map[string]int {
-	panic("Please implement the Transform function")
+	out := map[string]int{}
+	for value, letters := range in {
+		for _, letter := range letters {
+			out[strings.ToLower(letter)] = value
+		}
+	}
+	return out
 }
