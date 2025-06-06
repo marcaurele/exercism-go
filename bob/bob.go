@@ -5,11 +5,23 @@
 // https://golang.org/doc/effective_go.html#commentary
 package bob
 
+import (
+	"strings"
+)
+
 // Hey should have a comment documenting it.
 func Hey(remark string) string {
-	// Write some code here to pass the test suite.
-	// Then remove all the stock comments.
-	// They're here to help you get started but they only clutter a finished solution.
-	// If you leave them in, reviewers may protest!
-	return ""
+	spaceTrimmed := strings.TrimSpace(remark)
+	switch {
+	case spaceTrimmed == "":
+		return "Fine. Be that way!"
+	case strings.HasSuffix(spaceTrimmed, "?") && spaceTrimmed == strings.ToUpper(spaceTrimmed) && strings.ContainsAny(strings.ToUpper(spaceTrimmed), "ABCDEFGHIJKLMNOPQRSTUVWXYZ"):
+		return "Calm down, I know what I'm doing!"
+	case spaceTrimmed == strings.ToUpper(spaceTrimmed) && strings.ContainsAny(spaceTrimmed, "ABCDEFGHIJKLMNOPQRSTUVWXYZ"):
+		return "Whoa, chill out!"
+	case strings.HasSuffix(spaceTrimmed, "?"):
+		return "Sure."
+	default:
+		return "Whatever."
+	}
 }
