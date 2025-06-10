@@ -7,7 +7,7 @@ import (
 
 func ToRomanNumeral(input int) (string, error) {
 	if input < 1 || input > 3999 {
-		return "", errors.New("input must be greater or equal to 1, and less than 3999")
+		return "", errors.New("input must be between 1 and 3999")
 	}
 
 	transform := func(in int, single string, middle string, max string) string {
