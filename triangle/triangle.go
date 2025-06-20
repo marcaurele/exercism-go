@@ -10,10 +10,10 @@ type Kind uint8
 
 const (
 	// Pick values for the following identifiers used by the test program.
-	NaT Kind = 0 // not a triangle
-	Equ Kind = 1 // equilateral
-	Iso Kind = 2 // isosceles
-	Sca Kind = 3 // scalene
+	NaT Kind = iota // not a triangle
+	Equ             // equilateral
+	Iso             // isosceles
+	Sca             // scalene
 )
 
 // KindFromSides should have a comment documenting it.
