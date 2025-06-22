@@ -2,8 +2,6 @@ package protein
 
 import (
 	"errors"
-	"fmt"
-	"strings"
 )
 
 var ErrStop = errors.New("end of sequence")
@@ -11,18 +9,13 @@ var ErrInvalidBase = errors.New("invalid base")
 
 func FromRNA(rna string) ([]string, error) {
 	var output []string
-	if len(rna)%3 != 0 {
-		return output, ErrInvalidBase
-	}
 
-	chars := strings.Split(rna, "")
 	for i := 0; i < len(rna); i += 3 {
-		protein, err := FromCodon(fmt.Sprintf("%s%s%s", chars[i], chars[i+1], chars[i+2]))
+		protein, err := FromCodon(rna[i : i+3])
 
-		if err != nil && err == ErrStop {
+		if err == ErrStop {
 			return output, nil
-		}
-		if err != nil {
+		} else if err != nil {
 			return nil, err
 		}
 		output = append(output, protein)
@@ -33,6 +26,7 @@ func FromRNA(rna string) ([]string, error) {
 
 func FromCodon(codon string) (string, error) {
 	var protein string
+
 	switch codon {
 	case "AUG":
 		protein = "Methionine"
@@ -53,5 +47,6 @@ func FromCodon(codon string) (string, error) {
 	default:
 		return "", ErrInvalidBase
 	}
+
 	return protein, nil
 }
