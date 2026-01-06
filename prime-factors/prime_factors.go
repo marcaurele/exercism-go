@@ -9,11 +9,12 @@ func Factors(n int64) []int64 {
 
 	var i int64
 
-	for i = 2; ; i++ {
+	for i = 2; i<= n; {
 		if n%i == 0 {
 			primes = append(primes, i)
-			n = n / i
-			i = 1
+			n /= i
+		} else {
+			i++
 		}
 		if n == 1 {
 			break
