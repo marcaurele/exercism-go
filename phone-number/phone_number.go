@@ -34,7 +34,7 @@ func AreaCode(phoneNumber string) (string, error) {
 	if error != nil {
 		return clean, error
 	}
-	return string([]rune(clean)[:3]), nil
+	return clean[:3], nil
 }
 
 func Format(phoneNumber string) (string, error) {
@@ -42,6 +42,6 @@ func Format(phoneNumber string) (string, error) {
 	if error != nil {
 		return clean, error
 	}
-	phone := []rune(clean)
-	return "(" + string(phone[:3]) + ") " + string(phone[3:6]) + "-" + string(phone[6:]), nil
+
+	return "(" + clean[:3] + ") " + clean[3:6] + "-" + clean[6:], nil
 }
